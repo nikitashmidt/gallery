@@ -1,0 +1,104 @@
+@import '../../style/variables.scss';
+
+.Filters{
+    display: grid;
+    grid-template-columns: repeat(4, 265px);
+    grid-template-rows: repeat(1, 45px);
+    gap: 20px;
+    &-input{
+        border-radius: 8px;
+        border: 1px solid #B3B3B3;
+        padding: 15px;
+        &::placeholder{
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+        }
+        &:hover{
+            outline: 1px solid black;
+        }
+    }
+    &-select{
+        transition: 0.5s all;
+        height: 45px;
+        overflow: hidden;
+        border: 1px solid black;
+        border-radius: 8px;
+        &__active{
+            height: 400px;
+        }
+        &__created{
+            height: 130px;
+        }
+    }
+    &-header{
+        font-size: 13px ;
+        font-weight: 400;
+        height: 45px;
+        width: 100%;
+        outline: 1px solid #B3B3B3;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        padding: 15px;
+        box-sizing: border-box;
+        transition: 0.3s all;
+        &__active{
+            border-bottom-right-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border-bottom-color: #B3B3B3;
+            border-color: black;
+        }
+        &:hover{
+            border-color: black;
+        }
+        &__icons{
+            img{
+                &:first-child{
+                    margin-right: 10px;
+                    display: none;
+                }
+            }
+        }
+    }
+    &-authors, &-location{
+        height: 400px;
+        overflow: scroll;
+        &::-webkit-scrollbar-track-piece:end {
+            background: transparent;
+            margin-bottom: 30px; 
+        }
+        scrollbar-color: #7B7B7B #fff;
+    }
+    &-menu{
+        list-style-type: none;
+        padding: 15px 15px 35px 15px;
+        margin: 0;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        &__item{
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px;
+            border-radius: 4px;
+            transition: 0.3s all;
+            &:hover{
+                outline: 1px solid black;
+                cursor: pointer;
+            }
+            &:active{
+                transform: scale(0.9);
+            }
+        }
+    }
+    &-outline{
+        .Filters-header{
+            outline: none;
+        }
+    }
+}
