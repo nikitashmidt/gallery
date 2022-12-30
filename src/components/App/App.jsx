@@ -2,7 +2,7 @@ import Filters from "../Filters/Filters";
 import "./App.scss";
 import fwt from "../../resources/fwt.svg";
 import changeTheme from "../../resources/change-theme.svg";
-
+import Content from "../Content/Content";
 function App() {
   return (
     <div className="App">
@@ -18,6 +18,7 @@ function App() {
       </header>
       <main className="main">
         <Filters />
+        <Content/>
       </main>
     </div>
   );

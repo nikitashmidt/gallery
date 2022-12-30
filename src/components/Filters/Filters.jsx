@@ -9,6 +9,19 @@ const Filters = () => {
   const [stateAuthor, setStateAuthor] = useState(false);
   const [stateLocation, setStateLocation] = useState(false);
   const [stateCreated, setStateCreated] = useState(false);
+  const [closeBtn, setCloseBtn] = useState(false);
+
+
+  const onHandler = (e) => {
+    if (!e.target.dataset.author) return;
+    setAuthor(e.target.dataset.author)
+    setCloseBtn(true)
+  }
+  const onCloseBtn = () => {
+    setAuthor('Author');
+    setCloseBtn(false)
+  }
+
 
   const authorClass = stateAuthor
     ? "Filters-header Filters-header__active"
@@ -25,8 +38,11 @@ const Filters = () => {
     const filtersSelectCreated = stateCreated
         ? "Filters-select Filters-select__created Filters-outline"
         : "Filters-select Filters-outline";
+    const closeBtnClass = closeBtn
+      ? "Filters-header__close Filters-header__close-active"
+      : "Filters-header__close";
   return (
-    <div className="Filters">
+    <section className="Filters">
       <input type="search" className="Filters-input" placeholder="Name" />
       <div className={filtersSelectAuthor}>
         <div
@@ -35,14 +51,14 @@ const Filters = () => {
         >
           <span>{author}</span>
           <div className="Filters-header__icons">
-            <img src={closeSelect} alt="arrow" width={10} height={10} />
-            <img src={arrow} alt="arrow" width={10} height={10} />
+            <img src={closeSelect} alt="arrow" width={10} height={10} className={closeBtnClass} onClick={() => onCloseBtn()} />
+            <img src={arrow} alt="arrow" width={10} height={10} onClick={() => setAuthor('Author')} />
           </div>
         </div>
         <div className="Filters-authors">
-          <ul className="Filters-menu ">
-            <li className="Filters-menu__item" data-author="asdasd">
-              asdasd
+          <ul className="Filters-menu" onClick={(e) => onHandler(e)} >
+            <li className="Filters-menu__item" data-author="123">
+              123
             </li>
             <li className="Filters-menu__item" data-author="asdasd">
               asdasd
@@ -84,7 +100,7 @@ const Filters = () => {
         >
           <span>{location}</span>
           <div className="Filters-header__icons">
-            <img src={closeSelect} alt="arrow" width={10} height={10} />
+            <img src={closeSelect} alt="arrow" width={10} height={10} className={closeBtnClass}  />
             <img src={arrow} alt="arrow" width={10} height={10} />
           </div>
         </div>
@@ -126,25 +142,21 @@ const Filters = () => {
           </ul>
         </div>
       </div>
-          
-
       <div className={filtersSelectCreated}>
         <div className='Filters-header'  onClick={() => setStateCreated((state) => !state)} >
             <span>Created</span>
             <div className="Filters-header__icons">
-                <img src={closeSelect} alt="arrow" width={10} height={10} />
+                <img src={closeSelect} alt="arrow" width={10} height={10} className={closeBtnClass} />
                 <img src={arrow} alt="arrow" width={10} height={10} />
             </div>
             </div>
             <div className="Filters-created">
-                <input type="number" className="Filters-created__from" />
-                <input type="number" className="Filters-created__before" />
+                <input type="text" maxLength={4} className="Filters-created__from" placeholder="from" />
+                <span>-</span>
+                <input type="text"  maxLength={4} className="Filters-created__before" placeholder="before" />
             </div>
         </div>
-          
-
-
-    </div>
+    </section>
   );
 };
 export default Filters;
