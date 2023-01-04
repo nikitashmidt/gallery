@@ -1,22 +1,18 @@
+@import '../../style/variables.scss';
+@import '../../style/media.scss';
 .App {
-  min-height: 100vh;
-  font-size: calc(10px + 2vmin);
-  color: black;
-  max-width: 1243px;
+  max-width: 75%;
   margin: 0 auto;
   padding-top: 35px;
-  &-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 35px;
+  transition: 0.3s all;
+  .main{
+    padding-bottom: 50px;
   }
-  &-changetheme{
-    cursor: pointer;
-    transition: 0.3s all;
-    &:hover{
-      transform: scale(1.6);
-    }
+  @include desktop{
+    max-width: 90%;
+  }
+  @include mini-desktop{
+    max-width: calc(100% - 42px);
   }
 }
 

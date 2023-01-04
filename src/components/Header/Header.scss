@@ -1,0 +1,17 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    &-changetheme{
+        cursor: pointer;
+        transition: 0.3s all;
+        &:hover{
+          transform: scale(1.6);
+        }
+        svg{
+          fill: var(--color-black);
+        }
+      }
+  }
+ 

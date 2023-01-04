@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 @import '../style/variables.scss';
 
 body {
@@ -8,22 +8,75 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: var(--color-white);
-    ::-webkit-scrollbar {
-      width: 9px;               
-    }
-    ::-webkit-scrollbar-track {
-        background: white;        
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: #7B7B7B;    ;    
-        border-radius: 20px;       
-        border: 3px solid #7B7B7B;  
-    }
   }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
+* {
+  box-sizing: border-box;
+}
+
+.layout{
+  background-color: var(--color-white);
+  color: var(--color-black);
+ transition: 0.3s all;
+}
+.layout.dark{
+    background-color: var(--color-black);
+    .header-changetheme{
+      svg{
+        fill: white;
+      }
+    }
+    .Filters{
+      &-input{
+        background-color: var(--color-black);
+      }
+      &-select{
+        background-color: var(--color-black);
+        border-color: var(--color-white);
+      }
+      &-header{
+        span{
+          color: var(--color-white);
+        }
+      }
+      &-list{
+          color: var(--color-white);
+          &__item{
+            &:hover{
+              color: var(--color-black);
+              background-color: var(--color-white);
+            }
+          }
+      }
+      &-created{
+        &__dash{
+          color: var(--color-white)
+        }
+      }
+    }
+    .Pagination{
+      &-item{
+        color: var(--color-white);
+        &:hover{
+                background-color: #464646;
+        }
+        &__active{
+            background-color: var(--color-white);
+            color: var(--color-black);
+             &:hover{
+                background-color: var(--color-white);
+              }
+        }
+        &__right{
+          path{
+            fill: white;
+          }
+        }
+        &:not(:last-child){
+            border-right: 1px solid var(--color-white);
+        }
+      }
+      &-items{
+        border-color: var(--color-white)
+      }
+    }
 }

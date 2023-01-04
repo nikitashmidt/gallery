@@ -52,43 +52,43 @@ const Filters = () => {
           <span>{author}</span>
           <div className="Filters-header__icons">
             <img src={closeSelect} alt="arrow" width={10} height={10} className={closeBtnClass} onClick={() => onCloseBtn()} />
-            <img src={arrow} alt="arrow" width={10} height={10} onClick={() => setAuthor('Author')} />
+            <img src={arrow} alt="arrow" width={10} height={10} className={stateAuthor ? 'Filters-header__icons-active' : ''} onClick={() => setAuthor('Author')} />
           </div>
         </div>
         <div className="Filters-authors">
-          <ul className="Filters-menu" onClick={(e) => onHandler(e)} >
-            <li className="Filters-menu__item" data-author="123">
-              123
+          <ul className="Filters-list" onClick={(e) => onHandler(e)} >
+            <li className="Filters-list__item" data-author="Начало">
+              Начало
             </li>
-            <li className="Filters-menu__item" data-author="asdasd">
+            <li className="Filters-list__item" data-author="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-author="asdasd">
+            <li className="Filters-list__item" data-author="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-author="asdasd">
+            <li className="Filters-list__item" data-author="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-author="asdasd">
+            <li className="Filters-list__item" data-author="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-author="asdasd">
+            <li className="Filters-list__item" data-author="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-author="asdasd">
+            <li className="Filters-list__item" data-author="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-author="asdasd">
+            <li className="Filters-list__item" data-author="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-author="asdasd">
+            <li className="Filters-list__item" data-author="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-author="asdasd">
+            <li className="Filters-list__item" data-author="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-author="asdasd">
-              asdasd
+            <li className="Filters-list__item" data-author="asdasd">
+              Конец
             </li>
           </ul>
         </div>
@@ -101,42 +101,42 @@ const Filters = () => {
           <span>{location}</span>
           <div className="Filters-header__icons">
             <img src={closeSelect} alt="arrow" width={10} height={10} className={closeBtnClass}  />
-            <img src={arrow} alt="arrow" width={10} height={10} />
+            <img src={arrow} className={stateLocation ? 'Filters-header__icons-active' : ''} alt="arrow" width={10} height={10} />
           </div>
         </div>
         <div className="Filters-location">
-          <ul className="Filters-menu">
-            <li className="Filters-menu__item" data-location="asdasd">
+          <ul className="Filters-list">
+            <li className="Filters-list__item" data-location="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-location="asdasd">
+            <li className="Filters-list__item" data-location="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-location="asdasd">
+            <li className="Filters-list__item" data-location="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-location="asdasd">
+            <li className="Filters-list__item" data-location="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-location="asdasd">
+            <li className="Filters-list__item" data-location="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-location="asdasd">
+            <li className="Filters-list__item" data-location="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-location="asdasd">
+            <li className="Filters-list__item" data-location="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-location="asdasd">
+            <li className="Filters-list__item" data-location="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-location="asdasd">
+            <li className="Filters-list__item" data-location="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-location="asdasd">
+            <li className="Filters-list__item" data-location="asdasd">
               asdasd
             </li>
-            <li className="Filters-menu__item" data-location="asdasd">
+            <li className="Filters-list__item" data-location="asdasd">
               asdasd
             </li>
           </ul>
@@ -147,12 +147,12 @@ const Filters = () => {
             <span>Created</span>
             <div className="Filters-header__icons">
                 <img src={closeSelect} alt="arrow" width={10} height={10} className={closeBtnClass} />
-                <img src={arrow} alt="arrow" width={10} height={10} />
+                <img src={arrow} className={stateCreated ? 'Filters-header__icons-active' : ''} alt="arrow" width={10} height={10} />
             </div>
             </div>
             <div className="Filters-created">
                 <input type="text" maxLength={4} className="Filters-created__from" placeholder="from" />
-                <span>-</span>
+                <span className="Filters-created__dash">-</span>
                 <input type="text"  maxLength={4} className="Filters-created__before" placeholder="before" />
             </div>
         </div>
