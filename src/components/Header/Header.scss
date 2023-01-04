@@ -1,3 +1,5 @@
+@import '../../style/media.scss';
+
 .header{
     display: flex;
     justify-content: space-between;
@@ -8,6 +10,9 @@
         transition: 0.3s all;
         &:hover{
           transform: scale(1.6);
+          @include mini-desktop{
+            transform: none;
+          }
         }
         svg{
           fill: var(--color-black);

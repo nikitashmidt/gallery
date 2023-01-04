@@ -2,7 +2,6 @@
 
 .Content{
     margin-top: 45px;
-    font-family: 'Roboto', sans-serif;
     &-list{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -16,6 +15,9 @@
         }
         @include mini-desktop{
             gap: 10px;
+        }
+        @include mobile {
+            grid-template-columns: repeat(1, 1fr);
         }
     }
     &-item{

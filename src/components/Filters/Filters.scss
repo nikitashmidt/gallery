@@ -1,17 +1,27 @@
 @import '../../style/variables.scss';
+@import '../../style/media.scss';
 
 .Filters{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(1, 45px);
+    grid-auto-rows: 45px;
     gap: 20px;
+    @include mini-desktop{
+        gap: 10px;
+    }
+    @include tablet{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include mobile {
+        grid-template-columns: repeat(1, 1fr);
+    }
     &-input{
         border-radius: 8px;
         border: 1px solid #B3B3B3;
         padding: 15px;
         background-color: var(--color-white);
         transition: 0.3s all;
-        font-family: 'Roboto', sans-serif;
         font-weight: 400;
         color: #B3B3B3;
         &:hover{
@@ -99,7 +109,6 @@
         justify-content: center;
         gap: 10px;
         &__item{
-            font-family: 'Roboto', sans-serif;
             font-size: 16px;
             font-weight: 500;
             padding: 0px 30px ;
@@ -136,18 +145,25 @@
             height: 45px;
             border-radius: 8px;
             border: none;
-            font-family: 'Roboto', sans-serif;
             background-color: #EFEFEF;
             padding: 15px;
-            box-sizing: border-box;
             &::-webkit-outer-spin-button,
             &::-webkit-inner-spin-button {
             -webkit-appearance: none;
             } 
-            -moz-appearance: textfield;
             &:focus{
                 outline: 1px solid var(--color-black);
             }
+            @include mini-desktop {
+                width: 70px;
+            };
+            @include tablet{
+                width: 95px;
+            }
         }
+        @include desktop{
+            gap: 5px;
+        }
+        
     }
 }
