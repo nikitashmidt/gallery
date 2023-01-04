@@ -17,6 +17,11 @@ const Filters = () => {
     setAuthor(e.target.dataset.author)
     setCloseBtn(true)
   }
+  const onHandlerLocation = (e) => {
+    if (!e.target.dataset.location) return;
+    setLocation(e.target.dataset.location)
+    setCloseBtn(true)
+  }
   const onCloseBtn = () => {
     setAuthor('Author');
     setCloseBtn(false)
@@ -105,9 +110,9 @@ const Filters = () => {
           </div>
         </div>
         <div className="Filters-location">
-          <ul className="Filters-list">
-            <li className="Filters-list__item" data-location="asdasd">
-              asdasd
+          <ul className="Filters-list" onClick={(e) => onHandlerLocation(e)}>
+            <li className="Filters-list__item" data-location="Начало Location">
+              Начало Location
             </li>
             <li className="Filters-list__item" data-location="asdasd">
               asdasd
@@ -136,8 +141,8 @@ const Filters = () => {
             <li className="Filters-list__item" data-location="asdasd">
               asdasd
             </li>
-            <li className="Filters-list__item" data-location="asdasd">
-              asdasd
+            <li className="Filters-list__item" data-location="Конец Location">
+             Конец Location
             </li>
           </ul>
         </div>

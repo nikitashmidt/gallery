@@ -48,10 +48,10 @@
         justify-content: space-between;
         cursor: pointer;
         padding: 15px;
-        // box-sizing: border-box;
         transition: 0.3s all;
         span{
             color: var(--color-black);      
+            font-weight: 400;
         }
         &__close{
             margin-right: 10px;
