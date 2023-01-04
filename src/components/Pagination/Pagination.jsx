@@ -4,7 +4,6 @@ import './Pagination.scss';
 const Pagination = () => {
     return(
         <section className="Pagination">
-            <div className="Paginaton-wrapper">
                 <ul className="Pagination-items">
                     <li className="Pagination-item" data-pagination='start'>
                         <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +29,6 @@ const Pagination = () => {
                         </svg>
                     </li>
                 </ul>
-            </div>
         </section>
     )
 }

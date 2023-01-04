@@ -49,7 +49,7 @@ const Filters = () => {
   return (
     <section className="Filters">
       <input type="search" className="Filters-input" placeholder="Name" />
-      <div className={filtersSelectAuthor}>
+      <div className={filtersSelectAuthor} id="Filters-author">
         <div
           className={authorClass}
           onClick={() => setStateAuthor((state) => !state)}
@@ -98,7 +98,7 @@ const Filters = () => {
           </ul>
         </div>
       </div>
-      <div className={filtersSelectLocation}>
+      <div className={filtersSelectLocation} id="Filters-location">
         <div
           className={locationClass}
           onClick={() => setStateLocation((state) => !state)}
@@ -147,7 +147,7 @@ const Filters = () => {
           </ul>
         </div>
       </div>
-      <div className={filtersSelectCreated}>
+      <div className={filtersSelectCreated} id="Filters-created">
         <div className='Filters-header'  onClick={() => setStateCreated((state) => !state)} >
             <span>Created</span>
             <div className="Filters-header__icons">

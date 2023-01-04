@@ -23,9 +23,8 @@
         background-color: var(--color-white);
         transition: 0.3s all;
         font-weight: 400;
-        color: #B3B3B3;
-        &:hover{
-            outline: 1px solid var(--color-black);
+        &::placeholder{
+            color: #B3B3B3;
         }
     }
     &-select{
@@ -60,7 +59,7 @@
         padding: 15px;
         transition: 0.3s all;
         span{
-            color: var(--color-black);      
+            color: var(--color-black);
             font-weight: 400;
         }
         &__close{
@@ -140,6 +139,7 @@
         justify-content: center;
         margin-top: 20px;
         gap: 10px;
+        z-index: 2;
         input{
             width: 95px;
             height: 45px;
@@ -165,5 +165,16 @@
             gap: 5px;
         }
         
+    }
+}
+#Filters{
+    &-author{
+        z-index: 5;
+    }
+    &-location{
+        z-index: 4;
+    }
+    &-created{
+        z-index: 3;
     }
 }
