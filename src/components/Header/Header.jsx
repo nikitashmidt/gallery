@@ -5,6 +5,7 @@ import useTheme from '../../hooks/useTheme';
 
 const Header = () => {
   const { isDark, setIsDark } = useTheme();
+  
     return (
         <header className="header">
         <div className="header-logo">

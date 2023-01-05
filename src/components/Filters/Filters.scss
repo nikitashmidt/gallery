@@ -58,7 +58,7 @@
         cursor: pointer;
         padding: 15px;
         transition: 0.3s all;
-        span{
+        &__name{
             color: var(--color-black);
             font-weight: 400;
         }
@@ -93,14 +93,16 @@
             border-radius: 20px;       
         }
         &::-webkit-scrollbar-track-piece:end {
+            margin-right: 10px;
             margin-bottom: 30px; 
         }
+       
         scrollbar-color: #7B7B7B #fff;
     }
     &-list{
         list-style-type: none;
         padding: 0;
-        padding-bottom: 55px;
+        padding-bottom: 51px;
         margin: 0;
         font-size: 16px;
         display: flex;

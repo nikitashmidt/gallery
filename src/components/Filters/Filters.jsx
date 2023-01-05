@@ -1,167 +1,137 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import arrow from "../../resources/arrow.svg";
 import closeSelect from "../../resources/close-select.svg";
+import GalleryServices from "../../services/GalleryServices";
+import LittleSpinner from "../spinners/LittleSpinner";
 import "./Filters.scss";
 
+
+
 const Filters = () => {
-  const [author, setAuthor] = useState("Author");
-  const [location, setLocation] = useState("Location");
-  const [stateAuthor, setStateAuthor] = useState(false);
-  const [stateLocation, setStateLocation] = useState(false);
-  const [stateCreated, setStateCreated] = useState(false);
-  const [closeBtn, setCloseBtn] = useState(false);
-
-
-  const onHandler = (e) => {
-    if (!e.target.dataset.author) return;
-    setAuthor(e.target.dataset.author)
-    setCloseBtn(true)
+  const [isOpenAuthor, setIsOpenAuthor] = useState(false);
+  const [isOpenLocation, setIsOpenLocation] = useState(false);
+  const [isOpenCreated, setIsOpenCreated] = useState(false);
+  const [author, setAuthor] = useState('Author');
+  const [location, setLocation] = useState('Location');
+  const [authorBtn, setAuthorBtn] = useState(false);
+  const [locationBtn, setLocationBtn] = useState(false);
+  const [authorList, setAuthorList] = useState([]);
+  const [locationList, setLocationList] = useState([]);
+  
+  const { loading, error, getAuthors, getLocation } = GalleryServices();
+  
+  useEffect(() => {
+    getLocation().then(item => {
+      setLocationList([...item]);
+    })
+    getAuthors().then(item => {
+      setAuthorList([...item])
+    })
+  }, [])
+ 
+  const onHandler = (e, value) => {
+    switch (value) {
+      case "author":
+        if (e.target.dataset.author) { 
+          setAuthor(e.target.textContent);
+          setIsOpenAuthor(false)
+          setAuthorBtn(true)
+        }
+        break;
+      case "location":
+        if (e.target.dataset.location) {
+          setLocation(e.target.textContent)
+          setIsOpenLocation(false)
+          setLocationBtn(true)
+        }
+        break;
+      default:
+        return;
+    }
   }
-  const onHandlerLocation = (e) => {
-    if (!e.target.dataset.location) return;
-    setLocation(e.target.dataset.location)
-    setCloseBtn(true)
+  const onHandlerHeader = (e) => {
+    if (e.target.dataset.filters) { 
+      switch (e.target.dataset.filters) {
+        case "author":
+          setIsOpenAuthor(!isOpenAuthor);
+          break;
+        case "location":
+          setIsOpenLocation(!isOpenLocation)
+          break;
+        default:
+          return;
+      }
+    }
+    if (e.target.dataset.close) {
+      switch (e.target.dataset.close) {
+        case "author":
+          setAuthor('Author')
+          setAuthorBtn(false)
+          break;
+        case "location":
+          setLocation('Location')
+          setLocationBtn(false)
+          break;
+        default:
+          return;
+      }
+    } 
   }
-  const onCloseBtn = () => {
-    setAuthor('Author');
-    setCloseBtn(false)
-  }
-
-
-  const authorClass = stateAuthor
-    ? "Filters-header Filters-header__active"
-    : "Filters-header";
-  const filtersSelectAuthor = stateAuthor
-    ? "Filters-select Filters-select__active"
-        : "Filters-select";
-    const locationClass = stateLocation
-    ? "Filters-header Filters-header__active"
-        : "Filters-header";
-    const filtersSelectLocation = stateLocation
-    ? "Filters-select Filters-select__active"
-        : "Filters-select";
-    const filtersSelectCreated = stateCreated
-        ? "Filters-select Filters-select__created Filters-outline"
-        : "Filters-select Filters-outline";
-    const closeBtnClass = closeBtn
-      ? "Filters-header__close Filters-header__close-active"
-      : "Filters-header__close";
   return (
     <section className="Filters">
-      <input type="search" className="Filters-input" placeholder="Name" />
-      <div className={filtersSelectAuthor} id="Filters-author">
-        <div
-          className={authorClass}
-          onClick={() => setStateAuthor((state) => !state)}
-        >
-          <span>{author}</span>
-          <div className="Filters-header__icons">
-            <img src={closeSelect} alt="arrow" width={10} height={10} className={closeBtnClass} onClick={() => onCloseBtn()} />
-            <img src={arrow} alt="arrow" width={10} height={10} className={stateAuthor ? 'Filters-header__icons-active' : ''} onClick={() => setAuthor('Author')} />
-          </div>
-        </div>
-        <div className="Filters-authors">
-          <ul className="Filters-list" onClick={(e) => onHandler(e)} >
-            <li className="Filters-list__item" data-author="Начало">
-              Начало
-            </li>
-            <li className="Filters-list__item" data-author="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-author="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-author="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-author="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-author="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-author="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-author="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-author="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-author="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-author="asdasd">
-              Конец
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className={filtersSelectLocation} id="Filters-location">
-        <div
-          className={locationClass}
-          onClick={() => setStateLocation((state) => !state)}
-        >
-          <span>{location}</span>
-          <div className="Filters-header__icons">
-            <img src={closeSelect} alt="arrow" width={10} height={10} className={closeBtnClass}  />
-            <img src={arrow} className={stateLocation ? 'Filters-header__icons-active' : ''} alt="arrow" width={10} height={10} />
-          </div>
-        </div>
-        <div className="Filters-location">
-          <ul className="Filters-list" onClick={(e) => onHandlerLocation(e)}>
-            <li className="Filters-list__item" data-location="Начало Location">
-              Начало Location
-            </li>
-            <li className="Filters-list__item" data-location="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-location="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-location="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-location="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-location="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-location="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-location="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-location="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-location="asdasd">
-              asdasd
-            </li>
-            <li className="Filters-list__item" data-location="Конец Location">
-             Конец Location
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className={filtersSelectCreated} id="Filters-created">
-        <div className='Filters-header'  onClick={() => setStateCreated((state) => !state)} >
-            <span>Created</span>
+    <input type="search" className="Filters-input" placeholder="Name" />
+    <div className={isOpenAuthor ? "Filters-select Filters-select__active" : 'Filters-select'} id="Filters-author">
+        {loading || error ? <LittleSpinner /> :
+          <div className="Filters-header" data-filters='author' onClick={(e) => onHandlerHeader(e)}>
+            <span className="Filters-header__name">{author}</span>
             <div className="Filters-header__icons">
-                <img src={closeSelect} alt="arrow" width={10} height={10} className={closeBtnClass} />
-                <img src={arrow} className={stateCreated ? 'Filters-header__icons-active' : ''} alt="arrow" width={10} height={10} />
+            <img src={closeSelect} alt="arrow-close" width={10} height={10} data-close='author' className={authorBtn ? "Filters-header__close Filters-header__close-active" : 'Filters-header__close'} />
+            <img src={arrow} className={isOpenAuthor ? 'Filters-header__icons-active' : ""} alt="arrow" width={10} height={10}  />
             </div>
-            </div>
-            <div className="Filters-created">
-                <input type="text" maxLength={4} className="Filters-created__from" placeholder="from" />
-                <span className="Filters-created__dash">-</span>
-                <input type="text"  maxLength={4} className="Filters-created__before" placeholder="before" />
-            </div>
+          </div>
+        }
+      <div className="Filters-authors">
+        <ul className="Filters-list" onClick={(e) => onHandler(e, "author")} >
+          {authorList.map(item => {
+            return <li className="Filters-list__item" data-author={item.name} key={item.id} >{item.name}</li>
+          })}
+        </ul>
+      </div>
+    </div>
+    <div className={isOpenLocation ? "Filters-select Filters-select__active" : "Filters-select"} id="Filters-location">
+        {loading ? <LittleSpinner /> : 
+        <div className="Filters-header" data-filters='location' onClick={(e) => onHandlerHeader(e)}>
+          <span className="Filters-header__name">{location}</span>
+          <div className="Filters-header__icons">
+            <img src={closeSelect} alt="arrow-close" width={10} height={10} data-close="location" className={locationBtn ? "Filters-header__close Filters-header__close-active" : 'Filters-header__close'} />
+            <img src={arrow} className={isOpenLocation ? "Filters-header__icons-active" : ""} alt="arrow" width={10} height={10} />
+          </div>
         </div>
-    </section>
+      }
+      <div className="Filters-location">
+          <ul className="Filters-list" onClick={(e) => onHandler(e, 'location')}>
+          {locationList.map(item => {
+            return <li className="Filters-list__item" data-location={item.location} key={item.id} >{item.location}</li>
+          })}
+        </ul>
+      </div>
+    </div>
+    <div className={isOpenCreated ? "Filters-select Filters-select__created Filters-outline" : 'Filters-select Filters-outline'} id="Filters-created">
+      <div className='Filters-header'  onClick={() => setIsOpenCreated(!isOpenCreated)} >
+          <span>Created</span>
+          <div className="Filters-header__icons">
+              <img src={arrow} className={isOpenCreated ?  "Filters-header__icons-active" : ''}  alt="arrow" width={10} height={10} />
+          </div>
+          </div>
+          <div className="Filters-created">
+              <input type="text" maxLength={4} className="Filters-created__from" placeholder="from" />
+              <span className="Filters-created__dash">-</span>
+              <input type="text"  maxLength={4} className="Filters-created__before" placeholder="before" />
+          </div>
+      </div>
+  </section>
   );
 };
+
+
 export default Filters;

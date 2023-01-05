@@ -1,15 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 @import '../style/variables.scss';
-
+:root{
+  --body-color: white;
+}
 body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    &::-webkit-scrollbar {
+      width: 9px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: var(--body-background-color);
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #7B7B7B;    
+        border-radius: 20px;       
+    }
   }
 * {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-
 }
 
 .layout{
