@@ -26,6 +26,9 @@
         &::placeholder{
             color: #B3B3B3;
         }
+        &:focus{
+            outline: 1px solid var(--color-black);
+        }
     }
     &-select{
         position: relative;
@@ -55,12 +58,17 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 10px;
         cursor: pointer;
         padding: 15px;
         transition: 0.3s all;
         &__name{
             color: var(--color-black);
             font-weight: 400;
+            pointer-events: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
         }
         &__close{
             margin-right: 10px;
@@ -74,6 +82,7 @@
             }
         }
         &__icons{
+            display: flex;
             img{
                 transition: 0.3s all;
             }
@@ -112,9 +121,8 @@
         &__item{
             font-size: 16px;
             font-weight: 500;
-            padding: 0px 30px ;
+            padding: 13px 30px ;
             transition: 0.3s all;
-            height: 40px;
             cursor: pointer;
             display: flex;
             align-items: center;

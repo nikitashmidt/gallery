@@ -1,11 +1,19 @@
 import { createContext, useState, useMemo } from 'react';
 
-export const ThemeContext = createContext({ isDark: false})
+
+const boolean = localStorage.getItem('isDark') === 'true' ? true : false;
+
+
+
+export const ThemeContext = createContext({ isDark: boolean })
 
 export const ThemeProvider = ({ children }) => {
-    const [isDark, setIsDark] = useState(false);
-    const value = useMemo(() => ({ isDark, setIsDark }), [isDark]);
-    if (isDark) { 
+  
+  const [isDark, setIsDark] = useState(boolean);
+  const value = useMemo(() => ({ isDark, setIsDark }), [isDark]);
+  
+  localStorage.setItem('isDark', isDark)
+  if (isDark) { 
         document.body.style.setProperty('--body-background-color', "black")
       } else {
         document.body.style.setProperty('--body-background-color', "white")
@@ -16,3 +24,5 @@ export const ThemeProvider = ({ children }) => {
         </ThemeContext.Provider>
     )
 }
+
+

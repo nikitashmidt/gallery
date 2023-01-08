@@ -1,5 +1,5 @@
-import useTheme from '../hooks/useTheme';
-import '../style/style.scss';
+import useTheme from '../../hooks/useTheme';
+import '../../style/style.scss';
 import cn from 'classnames';
 
 const Layot = ({ children }) => {

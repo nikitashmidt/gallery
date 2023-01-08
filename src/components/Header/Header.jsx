@@ -5,12 +5,11 @@ import useTheme from '../../hooks/useTheme';
 
 const Header = () => {
   const { isDark, setIsDark } = useTheme();
-  
     return (
         <header className="header">
         <div className="header-logo">
           <a href="#logo">
-            <img src={fwt} alt="logo" />
+            <img src={fwt} alt="logo" width={68} height={68} />
           </a>
         </div>
         <div className="header-changetheme" onClick={() => setIsDark(!isDark)}>

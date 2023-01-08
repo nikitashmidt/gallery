@@ -22,11 +22,11 @@ body {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
-
 .layout{
   background-color: var(--color-white);
   color: var(--color-black);
- transition: 0.3s all;
+  transition: 0.3s all;
+  min-height: 100vh;
 }
 .layout.dark{
     background-color: var(--color-black);
@@ -80,8 +80,8 @@ body {
                 background-color: var(--color-white);
               }
         }
-        &__right{
-          path{
+        &__right, &__left{
+          svg{
             fill: white;
           }
         }
@@ -92,5 +92,8 @@ body {
       &-items{
         border-color: var(--color-white)
       }
+    }
+    .lds-ellipsis div {
+      background: var(--color-white);
     }
 }

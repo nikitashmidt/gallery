@@ -1,9 +1,6 @@
 .Pagination{
-    position: relative;
-    margin-top: 50px;
     &-items{
-        position: absolute;
-        display: flex;
+        display: inline-flex;
         align-items: center;
         list-style-type: none;
         border-radius: 4px;
@@ -23,6 +20,21 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        &__hidden{
+            pointer-events: none;
+            svg{
+                fill: #B3B3B3;
+            }
+        }
+        &__right, &__left{
+            svg{
+                pointer-events: none;
+                fill:black;
+            }
+        }
+        &__delete{
+            display: none;
+        }
         &:not(:last-child){
             border-right: 1px solid var(--color-black);
         }
@@ -40,6 +52,7 @@
         &__active{
             background-color: var(--color-black);
             color: var(--color-white);
+            pointer-events: none;
             &:hover{
                 background-color: var(--color-black);
             }

@@ -2,6 +2,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    outline: 1px solid #B3B3B3;
+    border-radius:8px;
+    &-content{
+      outline: none;
+      height: 100vh;
+      width: 100%;
+      z-index: 30;
+      position: absolute;
+      left: 50%;
+      top: 300px;
+      transform: translate(-50%, -50%);
+    }
 }
 .lds-ellipsis {
     position: relative;

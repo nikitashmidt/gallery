@@ -1,10 +1,10 @@
 import './LittleSpinner.scss';
-const LittleSpinner = () => {
+const LittleSpinner = ({content}) => {
+    const lsClass = content ? 'Little-spinner-content Little-spinner' : 'Little-spinner';
     return (
-        <div className='Little-spinner'>
-        <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>   
+        <div className={lsClass} >
+            <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>   
         </div>
     );
 };
-
 export default LittleSpinner;

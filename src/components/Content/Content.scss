@@ -2,14 +2,18 @@
 
 .Content{
     margin-top: 45px;
+    margin-bottom: 40px;
     &-list{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(4, 1fr);
         grid-auto-rows: 1fr;
         gap: 20px;
         padding: 0;
         margin: 0;
+        transition: 0.3s all;
+        opacity: 1;
+       
+        z-index: -10;
         @include tablet{
             grid-template-columns: repeat(2, 1fr);
         }
@@ -19,11 +23,17 @@
         @include mobile {
             grid-template-columns: repeat(1, 1fr);
         }
+        &__opacity{
+            opacity: 0;
+        }
     }
+   
     &-item{
         position: relative;
         overflow: hidden;
         border-radius: 20px;
+        transition: 0.3s all;
+        list-style-type: none;
         &:hover{
             .Content-item__descr{
                 bottom: 0;
@@ -34,7 +44,6 @@
             height: 100%;
             object-fit: cover;
         }
-        list-style-type: none;
         &__descr{
             font-size: 18px;
             width: 100%;
@@ -44,7 +53,7 @@
             bottom: -115px; 
             right: 0;
             padding: 5px 15px;
-            transition: 0.3s all;
+            transition: 0.8s all;
             display: flex;
             flex-direction: column;
             gap: 5px;
@@ -66,4 +75,33 @@
             font-weight: 300;
         }    
     }
+}
+.lazy-load-image-background.blur.lazy-load-image-loaded{
+    height: 100% !important;
+    object-fit: cover;
+    &::before{
+        content: none;
+        background-image: none;
+    }
+}
+
+.lazy-load-image-background{
+    height: 100% !important;
+    position: relative;
+    &::before{
+        content: "";
+        background-image: url('../../resources/error.webp');
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        color: black;
+        font-size: 40px;
+        z-index: 20;
+        background-color: #fff;
+    }
+}
+.opacityContent{
+    opacity: 0;
 }
