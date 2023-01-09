@@ -23,7 +23,7 @@ export const useHttp = () => {
             const data = await response.json();
             setTimeout(() => {
                 setLoading(false);
-            }, 1500);
+            }, 500);
             return data;
         } catch (e) {
             setLoading(false)

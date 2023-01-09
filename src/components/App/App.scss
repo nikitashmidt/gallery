@@ -1,19 +1,18 @@
 @import '../../style/variables.scss';
 @import '../../style/media.scss';
 .App {
-  max-width: 75%;
   margin: 0 auto;
-  padding-top: 35px;
+  padding: 35px 100px 0 100px;
   transition: 0.3s all;
   height: 100%;
   .main{
     padding-bottom: 150px;
   }
   @include desktop{
-    max-width: 90%;
-  }
-  @include mini-desktop{
-    max-width: calc(100% - 42px);
+    padding: 34px 34px 0 34px;
+    .main{
+      padding-bottom: 100px;
+    }
   }
 }
 

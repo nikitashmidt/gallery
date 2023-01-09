@@ -1,99 +1,106 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
-@import '../style/variables.scss';
-:root{
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+@import "../style/variables.scss";
+:root {
   --body-color: white;
 }
 body {
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    &::-webkit-scrollbar {
-      width: 9px;
-    }
-    &::-webkit-scrollbar-track {
-      background-color: var(--body-background-color);
-    }
-    &::-webkit-scrollbar-thumb {
-        background-color: #7B7B7B;    
-        border-radius: 20px;       
-    }
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &::-webkit-scrollbar {
+    width: 9px;
   }
+  &::-webkit-scrollbar-track {
+    background-color: var(--body-background-color);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #7b7b7b;
+    border-radius: 20px;
+  }
+  overflow-y: scroll;
+  scrollbar-color: #0a4c95 black;
+}
 * {
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-.layout{
+.layout {
   background-color: var(--color-white);
   color: var(--color-black);
   transition: 0.3s all;
   min-height: 100vh;
 }
-.layout.dark{
-    background-color: var(--color-black);
-    .header-changetheme{
-      svg{
-        fill: white;
+.layout.dark {
+  background-color: var(--color-black);
+  .header-changetheme {
+    svg {
+      fill: white;
+    }
+  }
+  .Filters {
+    &-input {
+      background-color: var(--color-black);
+      color: var(--color-white);
+      &:focus {
+        outline: 1px solid var(--color-white);
       }
     }
-    .Filters{
-      &-input{
-        background-color: var(--color-black);
+    &-select {
+      background-color: var(--color-black);
+      border-color: var(--color-white);
+    }
+    &-header {
+      span {
         color: var(--color-white);
-        &:focus{
-          outline: 1px solid var(--color-white);
-        }
       }
-      &-select{
-        background-color: var(--color-black);
-        border-color: var(--color-white);
-      }
-      &-header{
-        span{
-          color: var(--color-white);
-        }
-      }
-      &-list{
-          color: var(--color-white);
-          &__item{
-            &:hover{
-              color: var(--color-black);
-              background-color: var(--color-white);
-            }
-          }
-      }
-      &-created{
-        &__dash{
-          color: var(--color-white)
+    }
+    &-authors,
+    &-locations {
+      scrollbar-color: #7b7b7b black;
+    }
+    &-list {
+      color: var(--color-white);
+      &__item {
+        &:hover {
+          color: var(--color-black);
+          background-color: var(--color-white);
         }
       }
     }
-    .Pagination{
-      &-item{
+    &-created {
+      &__dash {
         color: var(--color-white);
-        &:hover{
-                background-color: #464646;
-        }
-        &__active{
-            background-color: var(--color-white);
-            color: var(--color-black);
-             &:hover{
-                background-color: var(--color-white);
-              }
-        }
-        &__right, &__left{
-          svg{
-            fill: white;
-          }
-        }
-        &:not(:last-child){
-            border-right: 1px solid var(--color-white);
-        }
-      }
-      &-items{
-        border-color: var(--color-white)
       }
     }
-    .lds-ellipsis div {
-      background: var(--color-white);
+  }
+  .Pagination {
+    &-item {
+      color: var(--color-white);
+      &:hover {
+        background-color: #464646;
+      }
+      &__active {
+        background-color: var(--color-white);
+        color: var(--color-black);
+        &:hover {
+          background-color: var(--color-white);
+        }
+      }
+      &__right,
+      &__left {
+        svg {
+          fill: white;
+        }
+      }
+      &:not(:last-child) {
+        border-right: 1px solid var(--color-white);
+      }
     }
+    &-items {
+      border-color: var(--color-white);
+    }
+  }
+  .lds-ellipsis div {
+    background: var(--color-white);
+  }
 }

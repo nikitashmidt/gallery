@@ -6,27 +6,40 @@ import Layot from "./Layout";
 import { ThemeProvider } from "../../providers/ThemeProvider";
 import "./App.scss";
 import {  GetDataProvider } from "../../providers/GetDataProvider";
-
-
+import { useEffect, useState } from "react";
+import Spinner from "../spinners/Spinner";
 
 const App = () => {
-  
-
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isPageLoaded, setIsPageLoaded] = useState(true ); 
+  useEffect(() => {
+    setIsLoaded(true);
+    document.body.style.overflow = 'hidden';
+  }, []);
+  useEffect(() => {
+    if (isLoaded) {
+      setTimeout(() => {
+        document.body.style.overflow = '';
+        setIsPageLoaded(false);
+      }, 1500);
+    }
+  }, [isLoaded]);
   return (
     <ThemeProvider>
-        <GetDataProvider>
-          <Layot>
+      <GetDataProvider>
+        <Layot>
+          {isPageLoaded ? <Spinner content={ true} /> : ''}
             <div className="App">
-                <main className="main">
+              <main className="main">
                 <Header />
-                  <Filters />
-                  <Content />
-                  <Pagination />
-                </main>
+                <Filters />
+                <Content />
+                <Pagination />
+              </main>
             </div>
-           </Layot>
-        </GetDataProvider>
-      </ThemeProvider>
+        </Layot>
+      </GetDataProvider>
+    </ThemeProvider>
   );
 };
 

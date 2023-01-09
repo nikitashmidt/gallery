@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useGetDataContext } from '../../providers/GetDataProvider';
+import { useGetDataContext } from '../../hooks/useGetDataContext';
 import './Pagination.scss';
 
 
@@ -9,18 +8,23 @@ const Pagination = () => {
         switch (e.target.dataset.pagination) {
             case 'next':
                 setCurrentPage((countPage => countPage + 1))
+                window.scrollTo(0,0)
             break;
             case 'prev':
                 setCurrentPage((countPage => countPage - 1))
+                window.scrollTo(0,0)
             break;
             case 'start':
                 setCurrentPage(1)
+                window.scrollTo(0,0)
                 break;
             case 'finish':
                 setCurrentPage(paginationCount)
+                window.scrollTo(0,0)
             break;
             case 'count':
                 setCurrentPage(+e.target.textContent)
+                window.scrollTo(0,0)
                 break;
             default:
             return;

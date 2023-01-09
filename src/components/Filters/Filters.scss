@@ -1,190 +1,193 @@
-@import '../../style/variables.scss';
-@import '../../style/media.scss';
+@import "../../style/variables.scss";
+@import "../../style/media.scss";
 
-.Filters{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(1, 45px);
-    grid-auto-rows: 45px;
-    gap: 20px;
-    @include mini-desktop{
-        gap: 10px;
+.Filters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 45px);
+  grid-auto-rows: 45px;
+  gap: 20px;
+  @include mini-desktop {
+    gap: 10px;
+  }
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include mobile {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  &-input {
+    border-radius: 8px;
+    border: 1px solid #b3b3b3;
+    padding: 15px;
+    background-color: var(--color-white);
+    transition: 0.3s all;
+    font-weight: 400;
+    &::placeholder {
+      color: #b3b3b3;
     }
-    @include tablet{
-        grid-template-columns: repeat(2, 1fr);
+    &:focus {
+      outline: 1px solid var(--color-black);
     }
-    @include mobile {
-        grid-template-columns: repeat(1, 1fr);
+  }
+  &-select {
+    position: relative;
+    transition: 0.5s all;
+    height: 45px;
+    overflow: hidden;
+    border: 1px solid var(--color-black);
+    border-radius: 8px;
+    z-index: 3;
+    background-color: var(--color-white);
+    &__active {
+      height: 400px;
     }
-    &-input{
-        border-radius: 8px;
-        border: 1px solid #B3B3B3;
-        padding: 15px;
-        background-color: var(--color-white);
+    &__created {
+      height: 130px;
+      .Filters-header {
+        outline: none;
+      }
+    }
+  }
+  &-header {
+    font-size: 13px;
+    font-weight: 400;
+    height: 45px;
+    width: 100%;
+    outline: 1px solid #b3b3b3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer;
+    padding: 15px;
+    transition: 0.3s all;
+    &__name {
+      color: var(--color-black);
+      font-weight: 400;
+      pointer-events: none;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    &__close {
+      margin-right: 10px;
+      transition: 0.3s all;
+      display: none;
+      &:hover {
+        transform: scale(1.45);
+      }
+      &-active {
+        display: inline;
+      }
+    }
+    &__icons {
+      display: flex;
+      img {
         transition: 0.3s all;
-        font-weight: 400;
-        &::placeholder{
-            color: #B3B3B3;
-        }
-        &:focus{
-            outline: 1px solid var(--color-black);
-        }
+      }
+      &-active {
+        transform: rotate(180deg);
+      }
     }
-    &-select{
-        position: relative;
-        transition: 0.5s all;
-        height: 45px;
-        overflow: hidden;
-        border: 1px solid var(--color-black);
-        border-radius: 8px;
-        z-index: 3;
-        background-color: var(--color-white); 
-        &__active{
-            height: 400px;
-        }
-        &__created{
-            height: 130px;
-            .Filters-header{
-                outline: none;
-            }
-        }
+  }
+  &-authors,
+  &-locations {
+    height: 400px;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+      width: 9px;
     }
-    &-header{
-        font-size: 13px ;
-        font-weight: 400;
-        height: 45px;
-        width: 100%;
-        outline: 1px solid #B3B3B3;   
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        cursor: pointer;
-        padding: 15px;
-        transition: 0.3s all;
-        &__name{
-            color: var(--color-black);
-            font-weight: 400;
-            pointer-events: none;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-        &__close{
-            margin-right: 10px;
-            transition: 0.3s all;
-            display: none;
-            &:hover{
-                transform: scale(1.45);
-            }
-            &-active{
-                display: inline;
-            }
-        }
-        &__icons{
-            display: flex;
-            img{
-                transition: 0.3s all;
-            }
-            &-active{
-                transform: rotate(180deg);
-            }
-        }
+    &::-webkit-scrollbar-thumb {
+      background-color: #7b7b7b;
+      border-radius: 20px;
     }
-    &-authors, &-location{
-        height: 400px;
-        overflow: scroll;
-        &::-webkit-scrollbar {
-            width: 9px;
-        }
-        &::-webkit-scrollbar-thumb {
-            background-color: #7B7B7B;    
-            border-radius: 20px;       
-        }
-        &::-webkit-scrollbar-track-piece:end {
-            margin-right: 10px;
-            margin-bottom: 30px; 
-        }
-       
-        scrollbar-color: #7B7B7B #fff;
+    &::-webkit-scrollbar-track-piece:end {
+      margin-right: 10px;
+      margin-bottom: 30px;
     }
-    &-list{
-        list-style-type: none;
-        padding: 0;
-        padding-bottom: 51px;
-        margin: 0;
-        font-size: 16px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-        &__item{
-            font-size: 16px;
-            font-weight: 500;
-            padding: 13px 30px ;
-            transition: 0.3s all;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            &:first-child{
-                margin-top: 10px;
-            }
-            &:hover{
-                background-color: var(--color-black);
-                color: var(--color-white);
-            }
-            &:active{
-                transform: scale(0.9);
-            }
-        }
+    scrollbar-color: #7b7b7b white;
+    scrollbar-width: thin;
+  }
+  &-list {
+    list-style-type: none;
+    padding: 0;
+    padding-bottom: 51px;
+    margin: 0;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    &__item {
+      font-size: 16px;
+      font-weight: 500;
+      padding: 13px 30px;
+      transition: 0.3s all;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      @include bigTablet {
+        padding: 13px 20px;
+      }
+      &:first-child {
+        margin-top: 10px;
+      }
+      &:hover {
+        background-color: var(--color-black);
+        color: var(--color-white);
+      }
+      &:active {
+        transform: scale(0.9);
+      }
     }
-    &-outline{
-        .Filters-header{
-            outline: none;
-        }
+  }
+  &-outline {
+    .Filters-header {
+      outline: none;
     }
-    &-created{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 20px;
-        gap: 10px;
-        z-index: 2;
-        input{
-            width: 95px;
-            height: 45px;
-            border-radius: 8px;
-            border: none;
-            background-color: #EFEFEF;
-            padding: 15px;
-            &::-webkit-outer-spin-button,
-            &::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            } 
-            &:focus{
-                outline: 1px solid var(--color-black);
-            }
-            @include mini-desktop {
-                width: 70px;
-            };
-            @include tablet{
-                width: 95px;
-            }
-        }
-        @include desktop{
-            gap: 5px;
-        }
-        
+  }
+  &-created {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+    z-index: 2;
+    input {
+      width: 95px;
+      height: 45px;
+      border-radius: 8px;
+      border: none;
+      background-color: #efefef;
+      padding: 15px;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+      &:focus {
+        outline: 1px solid var(--color-black);
+      }
+      @include mini-desktop {
+        width: 70px;
+      }
+      @include tablet {
+        width: 95px;
+      }
     }
+    @include desktop {
+      gap: 5px;
+    }
+  }
 }
-#Filters{
-    &-author{
-        z-index: 5;
-    }
-    &-location{
-        z-index: 4;
-    }
-    &-created{
-        z-index: 3;
-    }
+#Filters {
+  &-author {
+    z-index: 5;
+  }
+  &-location {
+    z-index: 4;
+  }
+  &-created {
+    z-index: 3;
+  }
 }

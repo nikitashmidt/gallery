@@ -1,107 +1,118 @@
-@import '../../style/media.scss';
-
-.Content{
-    margin-top: 45px;
-    margin-bottom: 40px;
-    &-list{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: 1fr;
-        gap: 20px;
-        padding: 0;
-        margin: 0;
-        transition: 0.3s all;
-        opacity: 1;
-       
-        z-index: -10;
-        @include tablet{
-            grid-template-columns: repeat(2, 1fr);
-        }
-        @include mini-desktop{
-            gap: 10px;
-        }
-        @include mobile {
-            grid-template-columns: repeat(1, 1fr);
-        }
-        &__opacity{
-            opacity: 0;
-        }
+@import "../../style/media.scss";
+.Content {
+  margin-top: 45px;
+  margin-bottom: 40px;
+  height: 100%;
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 390px;
+    grid-auto-rows: 390px;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    z-index: 10;
+    @include desktop {
+      grid-template-rows: 300px;
+      grid-auto-rows: 300px;
     }
-   
-    &-item{
-        position: relative;
-        overflow: hidden;
-        border-radius: 20px;
-        transition: 0.3s all;
-        list-style-type: none;
-        &:hover{
-            .Content-item__descr{
-                bottom: 0;
-            }
-        }
-        img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        &__descr{
-            font-size: 18px;
-            width: 100%;
-            height: 145px;
-            background-color: rgba(255, 255, 255, 0.75);
-            position: absolute;
-            bottom: -115px; 
-            right: 0;
-            padding: 5px 15px;
-            transition: 0.8s all;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        &__name{
-            font-weight: 700;
-            font-size: 18px;
-            line-height: 20px;
-        }
-        &__left, &__right{
-            line-height: 20px;
-            font-size: 16px;
-        }
-        &__left{
-            font-weight: 500;
-            margin-right: 5px;
-        }    
-        &__right{
-            font-weight: 300;
-        }    
+    @include mini-desktop {
+      gap: 10px;
     }
-}
-.lazy-load-image-background.blur.lazy-load-image-loaded{
-    height: 100% !important;
-    object-fit: cover;
-    &::before{
-        content: none;
-        background-image: none;
+    @include bigTablet {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr;
+      grid-auto-rows: 1fr;
     }
-}
-
-.lazy-load-image-background{
-    height: 100% !important;
+    @include mobile {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  &-item {
     position: relative;
-    &::before{
-        content: "";
-        background-image: url('../../resources/error.webp');
-        background-size: contain;
-        background-repeat: no-repeat;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        color: black;
-        font-size: 40px;
-        z-index: 20;
-        background-color: #fff;
+    overflow: hidden;
+    border-radius: 20px;
+    transition: 0.3s all;
+    list-style-type: none;
+    &:hover {
+      .Content-item__descr {
+        bottom: 0;
+      }
     }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &__descr {
+      font-size: 18px;
+      width: 100%;
+      height: 145px;
+      background-color: rgba(255, 255, 255, 0.75);
+      position: absolute;
+      bottom: -115px;
+      right: 0;
+      padding: 5px 15px;
+      transition: 0.8s all;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      @include desktop {
+        bottom: -118px;
+      }
+    }
+    &__name {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 20px;
+    }
+    &__left,
+    &__right {
+      line-height: 20px;
+      font-size: 16px;
+    }
+    &__left {
+      font-weight: 500;
+      margin-right: 5px;
+    }
+    &__right {
+      font-weight: 300;
+    }
+  }
 }
-.opacityContent{
-    opacity: 0;
+.pagenotfound {
+  margin: 0 auto;
+  display: block;
+  width: 60%;
+  border-radius: 20px;
+}
+.lazy-load-image-background.blur.lazy-load-image-loaded {
+  height: 100% !important;
+  object-fit: cover;
+  &::before {
+    content: none;
+    background-image: none;
+  }
+}
+
+.lazy-load-image-background {
+  height: 100% !important;
+  position: relative;
+  &::before {
+    content: "";
+    background-image: url("../../resources/error.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: black;
+    font-size: 40px;
+    z-index: 20;
+    background-color: #fff;
+  }
+}
+.opacityContent {
+  opacity: 0;
 }
