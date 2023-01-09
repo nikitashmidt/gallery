@@ -5,16 +5,19 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import { useGetDataContext } from "../../hooks/useGetDataContext";
 
 import img from "../../resources/pagenotfound.webp";
+import LittleSpinner from "../spinners/LittleSpinner";
 
 const Content = () => {
-  const { contentList, authorsList, locationsList, error } = useGetDataContext();
+  const { contentList, authorsList, locationsList, error, loading } = useGetDataContext();
 
+  const contentClass = loading ? "Content-list Content-list__opacity" : 'Content-list';
   return (
     <section className="Content">
+      {loading ? <LittleSpinner content={true}/> : ""}
       {contentList.length === 0 ? (
         <img src={img} alt="error" width={300} className="pagenotfound" />
       ) : (
-        <ul className="Content-list">
+        <ul className={contentClass}>
           {contentList.map((item) => {
             return (
               <li className="Content-item" key={item.id} id={item.id}>

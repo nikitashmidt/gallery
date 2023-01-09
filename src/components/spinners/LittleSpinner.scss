@@ -6,13 +6,11 @@
     border-radius:8px;
     &-content{
       outline: none;
-      height: 100vh;
       width: 100%;
-      z-index: 30;
+      z-index: 15;
       position: absolute;
       left: 50%;
-      top: 300px;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
     }
 }
 .lds-ellipsis {

@@ -20,7 +20,7 @@ const App = () => {
     if (isLoaded) {
       setTimeout(() => {
         document.body.style.overflow = '';
-        setIsPageLoaded(false);
+          setIsPageLoaded(false);
       }, 1500);
     }
   }, [isLoaded]);
@@ -28,7 +28,7 @@ const App = () => {
     <ThemeProvider>
       <GetDataProvider>
         <Layot>
-          {isPageLoaded ? <Spinner content={ true} /> : ''}
+      {isPageLoaded ? <Spinner/> : ''}
             <div className="App">
               <main className="main">
                 <Header />
